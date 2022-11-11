@@ -1,0 +1,15 @@
+[REST API 실습]
+1. oracle에 springmvcboard 사용자
+2. person테이블 생성 (number(10,2) pid<PK>, varchar2(200) pname, number(10,2) page)
+3. SpringRestPerson이라는 Spring Legacy Project (SptingMVC Template) 생성
+4. kr.kwangan2.rest.person 기본패키지 하위에 패키지 구성
+    controller, service, dao, domain, mapper
+5. PersonContoller, PersonService, PersonDAOImpl, Person
+    , PersonMapper(Java, XML)
+6. Tomcat 서버 설정 (MockMVC 대체 가능)
+7. 호출URI (모든 데이터는 JSON을 사용)
+   1) /person : list (GET)
+   2) /person/1 : select (GET)
+   3) /person/insert : insert (POST)
+   4) /person/5 : update (PUT)
+   5) /person/5 : delete (DELETE)

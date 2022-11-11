@@ -1,0 +1,27 @@
+DROP TABLE person;
+
+CREATE TABLE person (
+	pid number(10,0) NOT NULL PRIMARY KEY,
+	pname varchar2(200) NOT NULL,
+	page number(3,0) NOT NULL
+);
+
+DROP SEQUENCE seq_person;
+
+CREATE SEQUENCE seq_person INCREMENT BY 1;
+
+COMMENT ON COLUMN person.pid IS '번호';
+COMMENT ON COLUMN person.pname IS '이름';
+COMMENT ON COLUMN person.page IS '나이';
+
+INSERT INTO person(pid, pname, page)
+VALUES (seq_person.nextval, '이름1', 10);
+
+INSERT INTO person(pid, pname, page)
+VALUES (seq_person.nextval, '이름2', 20);
+
+INSERT INTO person(pid, pname, page)
+VALUES (seq_person.nextval, '이름3', 30);
+
+SELECT * FROM person;
+
