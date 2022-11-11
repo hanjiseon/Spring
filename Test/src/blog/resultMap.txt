@@ -1,0 +1,79 @@
+아래 Elements와 Attributes를 조합하여 detailedBlogResultMap라는 id의 resultMap을 텍스트에디터로 생성하세요! (파일명: resultMap.txt)
+1) MyBatis pdf는 참조하지 않습니다.
+2) 작성하신 자바빈들과 테이블을 참조하여 작성해보세요!
+
+[Elements]
+<resultMap>, <constructor>, <id>, <result>, <association>,
+<collection>, <discriminator>, <case>
+
+[Attributes]
+id, type, idArg, column, javaType, property, column, ofType, value, resultType
+--------------------------------------------------------------------------------------------------------------------
+
+<resultMap id="detailedBlogResultMap" type="Blog">
+<constructor>
+	<idArg column="blog_id" javaType="int"/>
+</constructor>
+<result property="title" column="blog_title"/>
+<association property="author" column="blog_author_id" javaType=" Author">
+	<id property="id" column="author_id"/>
+	<result property="username" column="author_username"/>
+	<result property="password" column="author_password"/>
+	<result property="email" column="author_email"/>
+	<result property="bio" column="author_bio"/>
+	<result property="favouriteSection" column="author_favourite_section"/>
+	</association>
+<collection property="posts" ofType="Post">
+		<id property="id" column="post_id"/>
+		<result property="subject" column="post_subject"/>
+		<association property="author" column="post_author_id" javaType="Author"/>
+		<collection property="comments" column="post_id" ofType=" Comment">
+		<id property="id" column="comment_id"/>
+	</collection>
+	<collection property="tags" column="post_id" ofType=" Tag" >
+		<id property="id" column="tag_id"/>
+	</collection>
+		<discriminator javaType="int" column="draft">
+		<case value="1" resultType="DraftPost"/>
+	</discriminator>
+</collection>
+</resultMap>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
