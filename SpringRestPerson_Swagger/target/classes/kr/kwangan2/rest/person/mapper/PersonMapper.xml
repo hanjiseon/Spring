@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.kwangan2.rest.person.mapper.PersonMapper">
+
+	<select id="listPerson"
+		resultType="kr.kwangan2.rest.person.domain.Person">
+		<![CDATA[
+			select 
+				pid, pname, page 
+			from
+				person
+		]]>
+	</select>
+	
+	<select id="selectPerson"
+		resultType="kr.kwangan2.rest.person.domain.Person">
+		<![CDATA[
+			select 
+				*
+			from
+				person
+			where
+				pid=#{pid}
+		]]>
+	</select>	
+	
+	<insert parameterType="kr.kwangan2.rest.person.domain.Person" id="insertPerson">
+		<![CDATA[
+			insert into person
+				(pid, pname, page)
+			values
+				(seq_person.nextval, #{pname}, #{page})
+		]]>
+	</insert>
+	
+	<update parameterType="kr.kwangan2.rest.person.domain.Person" id="updatePerson">
+		<![CDATA[
+			update
+				person
+			set
+				pname=#{pname}, 
+				page=#{page} 
+			where
+				pid=#{pid}
+		]]>
+	</update>	
+
+	<delete id="deletePerson">
+		<![CDATA[
+			delete
+				person
+			where
+				pid=#{pid}
+		]]>
+	</delete>
+
+</mapper>
+
+
+
+
+
+
+
+
+
